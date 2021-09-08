@@ -1,0 +1,44 @@
+﻿@page "{id}"
+@model WebTeacher.Pages.Select.InfoModel
+@{
+    ViewData["Title"] = Model.CurrentLesson.Name;
+    var data = Model.CurrentLesson;
+    int i = 0;
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Lekce: @data.Name</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm list-group">
+            <div class="row">
+                <a asp-area="" asp-page="./View/" asp-route-id="@data.LessonId" class="list-group-item list-group-item-action"> Zkoušení </a>
+                <a asp-area="" asp-page="./Test/" asp-route-id="@data.LessonId" class="list-group-item list-group-item-action"> Testování </a>
+                <a asp-area="" asp-page="./Index" class="list-group-item list-group-item-action">Zpět na procházení lekcí</a>
+            </div>
+        </div>
+        <div class="col-sm">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Otázka</th>
+                        <th scope="col">Odpověď</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in data.Records)
+                    {
+                        i++;
+                        <tr>
+                            <th scope="row"> @i </th>
+                            <td>@record.Question</td>
+                            <td>@record.Answer</td>
+                        </tr>
+                    }
+                </tbody>
+                </table>
+        </div>
+    </div>
+</div>

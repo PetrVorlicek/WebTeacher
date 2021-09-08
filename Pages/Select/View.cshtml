@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model WebTeacher.Pages.Select.ViewModel
+@{
+    var test = (string[])ViewData["Questions"];
+}
+
+@{
+        <div class="container">
+            <div class="row">
+                <h1>Otestuj se!</h1>
+            </div>
+            <form class="row" method="post">
+                <div class="container">
+                    @for (int i = 0; i < test.Count(); i++)
+                    {
+                        <div class="row border rounded">
+                            <h4 class="col">@test[i]</h4>
+                            <input class="col" type="text" name="TestAnswers[@i]" />
+                        </div>
+                        <br />
+                    }
+                </div>
+                <input class="d-none" type="text" value="@Model.QuestionsTemp" asp-for="QuestionsTemp" />
+                <br />
+                <button type="submit" class="btn btn-primary">Odeslat</button>
+            </form>
+        </div>
+}
+

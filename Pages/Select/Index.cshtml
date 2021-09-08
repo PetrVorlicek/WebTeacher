@@ -1,0 +1,18 @@
+﻿@page 
+@model WebTeacher.Pages.SelectModel
+@{
+    ViewData["Title"] = "Výběr lekce";
+    var data = Model.Lessons;
+}
+
+<div class="jumbotron">
+    <h4>Lekce</h4>
+    <hr />
+    <p>Zde najdete seznam lekcí, které můžete prohlížet.</p>
+</div>
+<div class="list-group">
+    @foreach(var lesson in data)
+    {
+        <a asp-area="" asp-page="./Info/" asp-route-id="@lesson.LessonId" class="list-group-item list-group-item-action"> @lesson.Name </a>
+    }
+</div>

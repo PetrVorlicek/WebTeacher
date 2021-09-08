@@ -1,0 +1,21 @@
+﻿@page "{error?}"
+@model WebTeacher.Pages.Select.FaultModel
+@{
+    var error = Model.Error;
+}
+<div class="alert alert-danger">
+    <h4 class="alert-heading">Chyba v zadávání!</h4>
+    <p>Hodnoty, zadávané do formuláře, nebyly ve správném formátu.</p>
+    <p>Přečtěte si prosím pečlivě následující popis, který Vám objasní chybu.</p>
+    <hr />
+    @if(error == "Name")
+    {
+        <p>Váš formulář neobsahoval správnou deklaraci jména lekce. Prosím, nenechávejte toto pole prázdné.</p>
+    }
+    @if(error == "Records")
+    {
+        <p>Některé z polí záznamů nebylo správně vyplněno. Prosím, před příštím potvrzení formuláře si pečlivě zkontrolujte, že žádné pole není prázdné.</p>
+    }
+</div>
+<a asp-page="Index" class="btn btn-primary">Hlavní stránka</a>
+<a asp-page="Add" asp-route-count="0" class="btn btn-secondary">Přidávání lekcí</a>

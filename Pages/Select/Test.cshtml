@@ -1,0 +1,34 @@
+﻿@page "{id}"
+@model WebTeacher.Pages.Select.TestModel
+@{
+    ViewData["Title"] = "Testování";
+    var test = Model.TestQuestions;
+    var data = Model.CurrentLesson;
+    int i = 0;
+}
+
+    <div class="container">
+        <div class="row">
+            <h1>Lekce: @data.Name</h1>
+        </div>
+            <form class="row" method="post">
+                @foreach (var question in test)
+                {
+                <div class="container border rounded">
+                    <h4>@question.Question</h4>
+
+                    @foreach (var answer in question.Answers)
+                    {
+
+                        <input type="radio" value="@answer" name="[@i]" /> @answer <br />
+
+                    }
+                    <input class="d-none" type="radio" value="" name="[@i]" checked />
+                    @{i++;}
+                </div>
+                }
+                <input class="d-none" type="text" value="@Model.QuestionsTemp" asp-for="QuestionsTemp" />
+                <br />
+                <button type="submit" class="btn btn-primary">Odeslat</button>
+            </form>
+    </div>

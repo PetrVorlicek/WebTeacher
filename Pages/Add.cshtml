@@ -1,0 +1,58 @@
+﻿@page "{count?}"
+@model WebTeacher.Pages.AddModel
+@if (Model.IsSelected)
+{
+    var count = Model.Count;
+<div class="container">
+    <h1>Vytvořte si vlastní zkoušení!</h1>
+</div>
+
+    <div class="alert alert-info">
+        <h4>Dodržujte následující:</h4>
+        <p>Prosím, vyplňte všechna následující pole - nenechávajte žádné prázdné.</p>
+    </div>
+    <form class="form-horizontal" method="post">
+        <label for="lessonName">Jméno lekce:</label>
+        <input type="text" name="LessonName" id="lessonName">
+        <table class="table table-striped">
+            <tr>
+                <th>#</th>
+                <th>Otázka</th>
+                <th>Odpověď</th>
+            </tr>
+            @for (int i = 0; i < count; i++)
+            {
+                int j = i + 1;
+                <tr>
+                    <td>
+                        @j
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Answer" />
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Question" />
+                    </td>
+                </tr>
+            }
+        </table>
+        <button type="submit" class="btn btn-primary">Odeslat</button>
+    </form>
+}
+else
+{
+    
+    <div class="container">
+        <div class="col-sm"><h1>Vytvořte si vlastní zkoušení!</h1></div>
+        <div class="col-sm alert alert-info">
+            <h4>Nejprve vyberte počet položek z následujícího seznamu:</h4>
+        </div>
+        <div class="col-sm list-group">
+            <a asp-page="Add" asp-route-count="5" class="list-group-item list-group-item-action">Vytvořit 5</a>
+            <a asp-page="Add" asp-route-count="10" class="list-group-item list-group-item-action">Vytvořit 10</a>
+            <a asp-page="Add" asp-route-count="15" class="list-group-item list-group-item-action">Vytvořit 15</a>
+            <a asp-page="Add" asp-route-count="20" class="list-group-item list-group-item-action">Vytvořit 20</a>
+        </div>
+    </div>
+
+}

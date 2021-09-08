@@ -1,0 +1,29 @@
+﻿@page 
+@model IndexModel
+@{
+
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Vítejte ve WebTeacher!</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <p>
+                Tento prototyp má za úkol pomoci studentům s učením pomocí jednoduchého zkoušení.
+                Student zde může vytvořit vlastní jednoduchý "slovníček" pojmů a jejich řešení.
+                Z těcho lekcí se student může automaticky zkoušet - buď prostřednictvím přímého psaní
+                správné odpovědi, která je vyhodnocována skórem podobným 
+                <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshteinově vzdálenosti</a>,
+                nebo pomocí zamíchaných kroužkovacích otázek.
+            </p>
+           
+        </div>
+        <div class="col-sm list-group">
+            <h4>Prozkoumejte:</h4>
+            <a asp-area="" asp-page="./Select/Index" class="list-group-item list-group-item-action">Procházet lekce</a>
+            <a asp-area="" asp-page="Add" class="list-group-item list-group-item-action">Přidat vlastní lekci</a>
+        </div>
+    </div>
+</div>
